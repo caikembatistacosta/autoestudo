@@ -1,3 +1,5 @@
+package autoestudo;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 
@@ -10,5 +12,7 @@ public class Apresentacao {
 		c.addTelefone(a);
 		Telefone procurado = c.procuraTelefone("47996532896");
 	}
+
+	protected Object frmLista;
 
 }
