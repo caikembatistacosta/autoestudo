@@ -1,4 +1,4 @@
-package autoestudo;
+// Caike Batista, Guilherme Moll, Micael Luan
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -29,7 +29,7 @@ public class Aprstc extends JFrame {
 	private JTextField tfNumero;
 	private Concessionaria concessionaria = new Concessionaria();
 
-	// parâmetros
+	// parÃ¢metros
 	private Telefone telefone;
 	private Residencial user;
 	private JTextField tfConsulta;
@@ -100,7 +100,7 @@ public class Aprstc extends JFrame {
 				Telefone consultado = concessionaria.procuraTelefone(tfConsulta.getText());
 				if (consultado == null) {
 
-					JOptionPane.showMessageDialog(empresaTab, "Telefone não encontrado :( ");
+					JOptionPane.showMessageDialog(empresaTab, "Telefone nÃ£o encontrado :( ");
 				}
 				else  { 
 				
@@ -258,7 +258,7 @@ public class Aprstc extends JFrame {
 				Especializado empresa = new Especializado();
 				
 
-				// a seguir seta parâmetros do usuário
+				// a seguir seta parÃ¢metros do usuÃ¡rio
 
 				empresa.setNomeUsuario(textField.getText());
 				empresa.setEnderecoInsta(tfespecializado1.getText());
@@ -349,9 +349,9 @@ public class Aprstc extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				user = new Residencial(); // cria usuário
+				user = new Residencial(); // cria usuÃ¡rio
 
-				// a seguir seta parâmetros do usuário
+				// a seguir seta parÃ¢metros do usuÃ¡rio
 
 				user.setNomeUsuario(tfNome.getText());
 				user.setEnderecoInsta(tfEndereco.getText());
@@ -365,7 +365,7 @@ public class Aprstc extends JFrame {
 				// guardando usuario no hashmap,
 				concessionaria.addTelefone(user);
 
-				JOptionPane.showMessageDialog(residencialTab, "Usuário cadastrado");
+				JOptionPane.showMessageDialog(residencialTab, "UsuÃ¡rio cadastrado");
 				}
 				catch (IllegalArgumentException s) {
 					JOptionPane.showMessageDialog(residencialTab, s);
