@@ -1,4 +1,4 @@
-package autoestudo;
+// Caike Batista, Guilherme Moll, Micael Luan
 
 import java.util.HashMap;
 import java.util.Map;
