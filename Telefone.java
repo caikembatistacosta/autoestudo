@@ -1,4 +1,4 @@
-package autoestudo;
+// Caike Batista, Guilherme Moll, Micael Luan
 
 import java.time.LocalDate;
 import java.util.Map;
