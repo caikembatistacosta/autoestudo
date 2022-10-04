@@ -1,4 +1,4 @@
-package autoestudo;
+// Caike Batista, Guilherme Moll, Micael Luan
 
 import java.time.LocalDate;
 
@@ -31,14 +31,14 @@ public class Residencial extends Telefone {
 
 		String info = "";
 		info += " Nome: "+getNomeUsuario();
-		info += "\n EndereÁo: "+ getEnderecoInsta();
+		info += "\n Endere√ßo: "+ getEnderecoInsta();
 		info += "\n Data: "+ getDataInsta();
 		info += "\n Numero: " + getNumero();
 		info += "\n Possui Internet? ";
 		if (isConexaoInternet() == true) {
 			info+= "sim";
 		} else info += "nao";
-		info += "\n Valor b·sico a pagar: R$ 15,00";
+		info += "\n Valor b√°sico a pagar: R$ 15,00";
 		
 		return info;
 
