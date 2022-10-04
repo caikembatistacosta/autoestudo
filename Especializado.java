@@ -1,4 +1,4 @@
-package autoestudo;
+// Caike Batista, Guilherme Moll, Micael Luan
 
 import java.time.LocalDate;
 import java.util.concurrent.ExecutionException;
@@ -25,7 +25,7 @@ public class Especializado extends Telefone {
 				return 123.90;
 			} return 187.82;
 		} else 
-			throw new IllegalArgumentException("Quantidade de ocorrências menor ou igual a 0");
+			throw new IllegalArgumentException("Quantidade de ocorrÃªncias menor ou igual a 0");
 
 	}
 
@@ -43,11 +43,11 @@ public class Especializado extends Telefone {
 
 		String info = "";
 		info += " Nome: "+getNomeUsuario();
-		info += "\n Endereço: "+ getEnderecoInsta();
+		info += "\n EndereÃ§o: "+ getEnderecoInsta();
 		info += "\n Data: "+ getDataInsta();
 		info += "\n Numero: " + getNumero();
 		info += "\n Quantidade de ocorrencias: "+ getQtdDeOcorr();
-		info += "\n Valor básico a pagar: "+ getValor();
+		info += "\n Valor bÃ¡sico a pagar: "+ getValor();
 		return info;
 	}
 	
