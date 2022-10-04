@@ -1,4 +1,7 @@
+package autoestudo;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Comercial extends Telefone {
 	
@@ -10,9 +13,10 @@ public class Comercial extends Telefone {
 		super(nomeUsuario,enderecoInsta,dataInsta,numero);
 		this.ramoAtividade = ramoAtividade;
 	}
-	
+	@Override
 	public double getValor() {
-		if(this.getDataInsta().isBefore(LocalDate.parse("2019-01-01"))) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		if(this.getDataInsta().isBefore(LocalDate.parse("01-01-2019", formatter))) {
 			return 25.00;
 		}else {
 			return 37.50;
@@ -25,6 +29,21 @@ public class Comercial extends Telefone {
 
 	public void setRamoAtividade(String ramoAtividade) {
 		this.ramoAtividade = ramoAtividade;
+	
+	}
+	
+	@Override
+	public String imprimir() {
+
+		String info = "";
+		info += " Nome: "+getNomeUsuario();
+		info += "\n Endere�o: "+ getEnderecoInsta();
+		info += "\n Data: "+ getDataInsta();
+		info += "\n Numero: " + getNumero();
+		info += "\n Ramo de atividade: "+ getRamoAtividade();
+		info += "\n Valor b�sico a pagar: "+ getValor();
+	
+	return info;
 	}
 	
 }

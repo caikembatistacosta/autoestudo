@@ -1,3 +1,5 @@
+package autoestudo;
+
 import java.time.LocalDate;
 import java.util.concurrent.ExecutionException;
 
@@ -10,7 +12,7 @@ public class Especializado extends Telefone {
 		super(nomeUsuario,enderecoInsta,dataInsta,numero);
 		this.qtdDeOcorr = qtdDeOcorr;
 	}
-	
+	@Override
 	public double getValor() {
 		if(this.qtdDeOcorr >0) {
 			if (this.qtdDeOcorr > 0 && this.qtdDeOcorr < 1001 ) {
@@ -35,5 +37,18 @@ public class Especializado extends Telefone {
 		this.qtdDeOcorr = qtdDeOcorr;
 	}
 
+	
+	@Override
+	public String imprimir() {
+
+		String info = "";
+		info += " Nome: "+getNomeUsuario();
+		info += "\n Endereço: "+ getEnderecoInsta();
+		info += "\n Data: "+ getDataInsta();
+		info += "\n Numero: " + getNumero();
+		info += "\n Quantidade de ocorrencias: "+ getQtdDeOcorr();
+		info += "\n Valor básico a pagar: "+ getValor();
+		return info;
+	}
 	
 }
