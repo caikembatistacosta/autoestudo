@@ -5,6 +5,11 @@ public class Partido {
 	private int numero;
 	private ArrayList<Vereador> vereadores = new ArrayList<>();
 
+	public Partido(String nome, int numero) {
+		this.setNome(nome);
+		this.setNumero(numero);
+	}
+
 	public void addVereador(Vereador v) {
 		vereadores.add(v);
 	}
@@ -69,6 +74,7 @@ public class Partido {
 	public ArrayList<Vereador> getVereadores() {
 		return this.vereadores;
 	}
+	
 	
 	public int getQtdVereadores() {
 		return this.vereadores.size();

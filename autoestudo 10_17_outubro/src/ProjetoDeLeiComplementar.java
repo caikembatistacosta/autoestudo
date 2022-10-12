@@ -3,12 +3,21 @@ import java.time.LocalDate;
 public class ProjetoDeLeiComplementar extends ProjetoDeLei {
 	private String artigoLO;
 	private int qtdVotosFavoraveis;
+	
 	public ProjetoDeLeiComplementar(String titulo, LocalDate dataApresentacao, LocalDate dataAprovacao,
 			int numeroProjeto, String artigoLO, int qtdVotosFavoraveis) {
 		super(titulo, dataApresentacao, dataAprovacao, numeroProjeto);
 		this.setArtigoLO(artigoLO);
 		this.setQtdVotosFavoraveis(qtdVotosFavoraveis);
 	}
+	
+	public ProjetoDeLeiComplementar(String titulo, LocalDate dataApresentacao,
+			int numeroProjeto, String artigoLO, int qtdVotosFavoraveis) {
+		super(titulo, dataApresentacao, numeroProjeto);
+		this.setArtigoLO(artigoLO);
+		this.setQtdVotosFavoraveis(qtdVotosFavoraveis);
+	}
+	
 	public String getArtigoLO() {
 		return artigoLO;
 	}

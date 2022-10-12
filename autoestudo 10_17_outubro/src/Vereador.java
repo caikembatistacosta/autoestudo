@@ -1,16 +1,17 @@
 import java.util.ArrayList;
 
-public class Vereador { // contribuição do Carlos
+public class Vereador {
 
 	private String nome;
 	private Partido partido;
 	
-	private ArrayList<ProjetoDeLei> projetosDeLei = new ArrayList();
+	public ArrayList<ProjetoDeLei> projetosDeLei = new ArrayList<ProjetoDeLei>();
 
-	
+
 	public int qtdProjApres() {
 		return this.projetosDeLei.size();
 	}
+	
 	
 	public int qtdsProjAprov() {
 		int pa = 0;
@@ -69,5 +70,5 @@ public class Vereador { // contribuição do Carlos
 	public double calculaDesempenho() {
 		return (this.qtdsProjAprov() / this.qtdProjApres()) * this.calculaIndiceTrabalho();
 	}
-
+	
 }

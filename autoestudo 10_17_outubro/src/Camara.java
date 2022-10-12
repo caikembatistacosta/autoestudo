@@ -6,6 +6,7 @@ public class Camara { // contribuição do Ari
 	public void addPartido(Partido p) {
 		partidos.add(p);
 	}
+	
 
 	public Partido getPartido(int numero) {
 		for (Partido p: partidos) {
@@ -42,7 +43,6 @@ public class Camara { // contribuição do Ari
 		return total / contador;
 	}
 
-	// aplica uma estratégia de dividir responsabilidades
 	public Vereador getVerMaisProjetosAprov() {
 		Vereador verMaisProj = null;
 
@@ -57,7 +57,6 @@ public class Camara { // contribuição do Ari
 		return verMaisProj;
 	}
 
-	// aplica outra estratégia: pega a lista e faz tudo aqui
 	public Vereador getVerMenorDesempenho() {
 		Vereador verMenor = null;
 		for (Partido p : partidos) {

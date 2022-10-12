@@ -53,7 +53,10 @@ public class ProjetoDeLei {
 	}
 	
 	public String mostrar() {
-		String str = "Projeto de lei " + this.getTitulo() +" de número "+this.getNumeroProjeto() + " e com data de apresentação: " +this.getDataApresentacao() + " e data de aprovação: " + this.getDataAprovacao();
+		String str = "Projeto de lei " + this.getTitulo() +" de número "+this.getNumeroProjeto() + " e com data de apresentação: " +this.getDataApresentacao();
+		if(this.isAprovado()) {
+			str += " e data de aprovação: " + this.getDataAprovacao();
+		}
 		return str;
 	}
 	
