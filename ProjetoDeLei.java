@@ -7,8 +7,8 @@ public class ProjetoDeLei {
 	private String titulo;
 	private LocalDate dataApresentacao;
 	private LocalDate dataAprovacao = null;
-	private int numeroProjeto;
-	
+	private  int numeroProjeto;
+	private static int proximoProjeto = 0;
 
 	
 	// projeto aprovado
@@ -16,8 +16,9 @@ public class ProjetoDeLei {
 		super();
 		this.titulo = titulo;
 		this.dataApresentacao = dataApresentacao;
-		this.numeroProjeto = numeroProjeto;
-	}
+		this.numeroProjeto = numeroProjeto;	
+		
+ }
 
  public ProjetoDeLei(){}
  
@@ -31,8 +32,17 @@ public ProjetoDeLei(String titulo, LocalDate dataApresentacao, LocalDate dataApr
 	}
 
 
-private String mostrar() {
-	 return toString();
+public String mostrar() {
+	 String descricao ="\n Titulo: ";
+	 descricao += getTitulo()+" Data de apresentacao: ";
+	 descricao += getDataApresentacao(); 
+	 if(getDataAprovacao() != null) {
+		 descricao += " Data de aprovacao: "+ getDataApresentacao();
+	 }
+	 descricao += "Numero do projeto: ";
+	 descricao += getNumeroProjeto();
+	
+	return descricao;
  }
 
 
@@ -46,9 +56,12 @@ public void setTitulo(String titulo) {
 }
 
 public void setNumeroProjeto(int quantiaProjetos) {
-	this.numeroProjeto = (quantiaProjetos++);
+	this.numeroProjeto = this.numeroProjeto + 1;
 }
 
+public int getNumeroProjeto() {
+	return this.numeroProjeto;
+}
 
 
 public LocalDate getDataApresentacao() {

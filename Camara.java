@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Camara { // contribuição do Ari
+public class Camara { // contribuiï¿½ï¿½o do Ari
 	private ArrayList<Partido> partidos = new ArrayList<>();
     private int quantiaProjetos;
 	public void addPartido(Partido p) {
@@ -42,7 +42,7 @@ public class Camara { // contribuição do Ari
 		return total / contador;
 	}
 
-	// aplica uma estratégia de dividir responsabilidades
+	// aplica uma estratï¿½gia de dividir responsabilidades
 	public Vereador getVerMaisProjetosAprov() {
 		Vereador verMaisProj = null;
 
@@ -57,7 +57,11 @@ public class Camara { // contribuição do Ari
 		return verMaisProj;
 	}
 
-	// aplica outra estratégia: pega a lista e faz tudo aqui
+	public int getQuantiaProjetos() {
+		return this.quantiaProjetos;
+	}
+	
+	// aplica outra estratï¿½gia: pega a lista e faz tudo aqui
 	public Vereador getVerMenorDesempenho() {
 		Vereador verMenor = null;
 		for (Partido p : partidos) {

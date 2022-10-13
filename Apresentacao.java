@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JSeparator;
+import javax.swing.JCheckBox;
+import javax.swing.JSlider;
 
 /**
  *
@@ -247,7 +250,7 @@ c	 * Creates new form Apresentacao
 		Projeto.add(lblNewLabel);
 		
 		cb0 = new JComboBox();
-		cb0.setBounds(10, 228, 86, 20);
+		cb0.setBounds(59, 8, 86, 20);
 		Projeto.add(cb0);
 		
 		JLabel lblNewLabel_1 = new JLabel("Titulo");
@@ -277,7 +280,7 @@ c	 * Creates new form Apresentacao
 		Projeto.add(tf3);
 		tf3.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Cadastrar");
+		JButton btnNewButton = new JButton("Cadastrar P.Lei");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String str;
@@ -287,60 +290,146 @@ c	 * Creates new form Apresentacao
 				//transformando String para DateTime
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				LocalDate today = LocalDate.parse(tf2.getText(), formatter);
+				//p.setNumeroProjeto(camara.getQuantiaProjetos()); FVCK NUMERO PROJETO
 				p.setDataApresentacao(today);
-		// nao consigo fazer esse if funcionar
-				if(tf3.getText() !=  "") {
-					LocalDate tomorrow = LocalDate.parse(tf3.getText(), formatter);
-					p.setDataApresentacao(tomorrow);	
+		// o if agora funciona
+				if(tf3.getText().contentEquals("")) {
+				p.setDataAprovacao(null);	
+				}else {
+					DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					LocalDate tomorrow = LocalDate.parse(tf2.getText(), formatter1);
+					p.setDataAprovacao(tomorrow);	
 				}
 			  // v.addProjeto(p);
 			   Vereador verr = (Vereador) cb0.getSelectedItem();
 			   verr.addProjeto(p);
 			   str = "Projeto cadastrado para ";
-			   JOptionPane.showInputDialog(this, str);
+			   JOptionPane.showMessageDialog(null, str);
 		
 			
 			
 		}
 		});
-		btnNewButton.setBounds(140, 98, 89, 23);
+		btnNewButton.setBounds(140, 98, 114, 23);
 		Projeto.add(btnNewButton);
 		
-		projeto0 = new JTextField();
-		projeto0.setBounds(59, 8, 86, 20);
-		Projeto.add(projeto0);
-		projeto0.setColumns(10);
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 132, 361, 2);
+		Projeto.add(separator);
+		
+		tf5 = new JTextField();
+		tf5.setBounds(150, 142, 86, 20);
+		Projeto.add(tf5);
+		tf5.setColumns(10);
+		
+		JLabel lblNewLabel_4 = new JLabel("Quantia Votos Favoraveis");
+		lblNewLabel_4.setBounds(10, 145, 133, 14);
+		Projeto.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Lei Organica");
+		lblNewLabel_5.setBounds(10, 170, 75, 14);
+		Projeto.add(lblNewLabel_5);
+		
+		tf6 = new JTextField();
+		tf6.setBounds(78, 173, 86, 20);
+		Projeto.add(tf6);
+		tf6.setColumns(10);
+		
+		JButton btnNewButton_2 = new JButton("Cadastrar P. Lei Complementar");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String str;
+				//Vereador v = partido.getVereador(projeto0.getText());
+				ProjetoDeLeiComplementar pc = new ProjetoDeLeiComplementar();
+				pc.setNumeroProjeto(camara.getQuantiaProjetos());
+				pc.setTitulo(tf1.getText());
+				//transformando String para DateTime
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				LocalDate today = LocalDate.parse(tf2.getText(), formatter);
+				pc.setDataApresentacao(today);
+		// nao consigo fazer esse if funcionar
+				if(tf3.getText().contentEquals("")) {
+				pc.setDataAprovacao(null);	
+				}else {
+					DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					LocalDate tomorrow = LocalDate.parse(tf2.getText(), formatter1);
+					pc.setDataAprovacao(tomorrow);	
+				}
+			  // v.addProjeto(p);
+			   pc.setQtdVotosFavoraveis(Integer.parseInt(tf5.getText()));
+			   pc.setArtigoLO(tf6.getText());
+				
+				Vereador verr = (Vereador) cb0.getSelectedItem();
+			   verr.addProjeto(pc);
+			   str = "Projeto cadastrado para ";
+			   JOptionPane.showMessageDialog(null, str);
+		
+			}
+		});
+		btnNewButton_2.setBounds(78, 225, 199, 23);
+		Projeto.add(btnNewButton_2);	
+		
+		btnNewButton_3 = new JButton("Consultar Projetos");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			String msg = "";
+				int tamanho = cb0.getItemCount();
+			for(int i = 0;i < tamanho;i++) {	
+			Vereador verr = (Vereador) cb0.getItemAt(i);
+		 msg += verr.getNome() +" " +verr.getAllProjetos();
+			}
+			JOptionPane.showMessageDialog(null, msg);
+			}
+		});
 
 		javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-		jPanel3.setLayout(jPanel3Layout);
-		jPanel3Layout.setHorizontalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel3Layout.createSequentialGroup().addContainerGap()
-						.addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(jSeparator1)
-								.addGroup(jPanel3Layout.createSequentialGroup().addComponent(jLabel9)
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-										.addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 52,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGap(18, 18, 18).addComponent(jButton5).addGap(0, 41, Short.MAX_VALUE)))
-						.addContainerGap())
+		jPanel3Layout.setHorizontalGroup(
+			jPanel3Layout.createParallelGroup(Alignment.LEADING)
 				.addGroup(jPanel3Layout.createSequentialGroup()
-						.addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(jButton3).addComponent(jButton4).addComponent(jButton6)
-								.addComponent(jButton7))
-						.addGap(0, 0, Short.MAX_VALUE)));
-		jPanel3Layout.setVerticalGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel3Layout.createSequentialGroup().addContainerGap()
-						.addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-								.addComponent(jLabel9)
-								.addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addComponent(jButton5))
-						.addGap(13, 13, 13)
-						.addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10,
-								javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addComponent(jButton3)
-						.addGap(18, 18, 18).addComponent(jButton4).addGap(18, 18, 18).addComponent(jButton6)
-						.addGap(18, 18, 18).addComponent(jButton7).addContainerGap(45, Short.MAX_VALUE)));
+					.addGroup(jPanel3Layout.createParallelGroup(Alignment.LEADING)
+						.addGroup(jPanel3Layout.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(jPanel3Layout.createParallelGroup(Alignment.LEADING)
+								.addComponent(jSeparator1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGroup(jPanel3Layout.createSequentialGroup()
+									.addComponent(jLabel9)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(jTextField7, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(jButton5))))
+						.addComponent(jButton4)
+						.addComponent(jButton6)
+						.addComponent(jButton7))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(jPanel3Layout.createSequentialGroup()
+					.addComponent(jButton3)
+					.addPreferredGap(ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+					.addComponent(btnNewButton_3)
+					.addGap(32))
+		);
+		jPanel3Layout.setVerticalGroup(
+			jPanel3Layout.createParallelGroup(Alignment.LEADING)
+				.addGroup(jPanel3Layout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(jPanel3Layout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jLabel9)
+						.addComponent(jTextField7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jButton5))
+					.addGap(13)
+					.addComponent(jSeparator1, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(jPanel3Layout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(jButton3)
+						.addComponent(btnNewButton_3))
+					.addGap(18)
+					.addComponent(jButton4)
+					.addGap(18)
+					.addComponent(jButton6)
+					.addGap(18)
+					.addComponent(jButton7)
+					.addContainerGap(45, Short.MAX_VALUE))
+		);
+		jPanel3.setLayout(jPanel3Layout);
 
 		jTabbedPane1.addTab("Consultas", jPanel3);
 
@@ -485,6 +574,8 @@ c	 * Creates new form Apresentacao
 	private JTextField tf1;
 	private JTextField tf2;
 	private JTextField tf3;
-	private JTextField projeto0;
 	private JButton btnNewButton_1;
+	private JTextField tf5;
+	private JTextField tf6;
+	private JButton btnNewButton_3;
 }
